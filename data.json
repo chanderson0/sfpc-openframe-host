@@ -1,15 +1,23 @@
 [
   {
-    "iframe": "http://chanderson0.github.io/sfpc-rtp-vera_molnar/0007/"
+    "iframe": "http://chanderson0.github.io/sfpc-rtp-vera_molnar/0007/",
+    "author": "Chris Anderson",
+    "title": "Vera Molnar - Transformations"
   },
   {
     "img": "http://36.media.tumblr.com/e6c9fa47accd767aa12faecbf1066ae7/tumblr_nx90b9KHVH1ui4qufo1_1280.jpg",
-    "fit": "center no-repeat"
+    "fit": "center no-repeat",
+    "author": "Chris Anderson",
+    "title": "Friends"
   },
   {
-    "iframe": "http://robbykraft.com/snowflake/"
+    "iframe": "http://robbykraft.com/snowflake/",
+    "author": "Robby Kraft",
+    "title": "Snowflake Generator"
   },
   {
-    "iframe": "http://sarahhoworka.com/facegen2/"
+    "iframe": "http://sarahhoworka.com/facegen2/",
+    "author": "Sarah Howorka",
+    "title": "Face Generator"
   }
 ]
