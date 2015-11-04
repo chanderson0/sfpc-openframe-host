@@ -1,0 +1,116 @@
+<html>
+<head>
+<style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      font-family: 'Open Sans', sans-serif;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #controls {
+      position: fixed;
+      bottom: 10px;
+      left: 0px;
+      right: 0px;
+      text-align: center;
+    }
+
+    #image {
+      width: 100%;
+      height: 100%;
+    }
+</style>
+</head>
+
+<body>
+
+<iframe id="frame" width="100%" height="100%" src="" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+  <p>Your browser doesn't support iFrames</p>
+</iframe>
+
+<div id="image"></div>
+
+<div id="controls">
+<a href="#" id="prev">Previous</a> | <a href="#" id="play">Pause</a>
+ | <a href="#" id="next">Next</a>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+  var items = [{ iframe: "http://sfpc.io" }];
+  var n = 0;
+
+  var render = function(i) {
+    console.log('rendering '+i);
+    var object = items[i];
+    var url = null;
+    if (object.iframe) {
+      url = object.iframe;
+      var src = url;
+      var iframe = $('#frame');
+      iframe.attr('src', src);
+      iframe.show();
+      $("#image").hide();
+    } else if (object.img) {
+      url = object.img;
+      var set = 'url(\'' + url + '\')';
+      set += ' ' + (object.fit || 'center no-repeat');
+
+      $("#image").css('background', set);
+      $('#frame').hide();
+      $("#image").show();
+    }
+
+    return false;
+  };
+
+  var advance = function() {
+    n++;
+    if (n >= items.length) {
+      n = 0;
+    }
+
+    render(n);
+  };
+
+  $('#next').click(advance);
+
+  $('#prev').click(function() {
+    n--;
+    if (n < 0) {
+      n = items.length - 1;
+    }
+
+    render(n);
+  });
+
+  render(0);
+
+  var timeout = 2000;
+  var tid = setTimeout(timer, timeout);
+  function timer() {
+    advance();
+    tid = setTimeout(timer, timeout);
+  }
+
+  var playState = true;
+  $('#play').click(function() {
+    if (playState) {
+      playState = false;
+      clearTimeout(tid);
+      $('#play').text('Play');
+    } else {
+      playState = true;
+      setTimeout(timer, timeout);
+      $('#play').text('Pause');
+    }
+  });
+</script>
+
+</body>
+</html>
