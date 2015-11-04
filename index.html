@@ -106,7 +106,7 @@
   var updateTID = setTimeout(updateData, updateTimeout);
   var firstUpdate = true;
   var updateData = function() {
-    var url = 'https://raw.githubusercontent.com/chanderson0/sfpc-openframe-host/master/data.json';
+    var url = 'https://raw.githubusercontent.com/chanderson0/sfpc-openframe-host/gh-pages/data.json';
     $.getJSON(url, function(data) {
       items = data;
       if (firstUpdate) {
