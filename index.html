@@ -50,6 +50,7 @@
 <script>
   var items = [{ iframe: "http://sfpc.io" }];
   var n = 0;
+  var tid, updateTID;
 
   var render = function(i) {
     console.log('rendering '+i);
@@ -96,14 +97,13 @@
   });
 
   var timeout = 30000;
-  var tid = setTimeout(timer, timeout);
+  
   function timer() {
     advance();
     tid = setTimeout(timer, timeout);
   }
 
   var updateTimeout = 2000;
-  var updateTID = setTimeout(updateData, updateTimeout);
   var firstUpdate = true;
   var updateData = function() {
     var url = 'https://raw.githubusercontent.com/chanderson0/sfpc-openframe-host/gh-pages/data.json';
@@ -123,6 +123,7 @@
     updateData();
     updateTID = setTimeout(updateTimer, updateTimeout);
   }
+  
 
   var playState = true;
   $('#play').click(function() {
@@ -139,6 +140,8 @@
 
   updateData();
   render(0);
+  tid = setTimeout(timer, timeout);
+  updateTID = setTimeout(updateTimer, updateTimeout);
 </script>
 
 </body>
