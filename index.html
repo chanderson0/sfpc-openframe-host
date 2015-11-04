@@ -107,7 +107,10 @@
   var firstUpdate = true;
   var updateData = function() {
     var url = 'https://raw.githubusercontent.com/chanderson0/sfpc-openframe-host/gh-pages/data.json';
+
+    console.log('Updating data...');
     $.getJSON(url, function(data) {
+      console.log('Updated!');
       items = data;
       if (firstUpdate) {
         firstUpdate = false;
